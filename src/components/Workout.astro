@@ -1,0 +1,74 @@
+---
+import tornTop from "../assets/tornPaper.svg";
+---
+
+<div class="max-w-xl my-12 md:my-16 -space-y-1 mx-auto">
+  <!-- torn paper top -->
+  <img
+    src={tornTop.src}
+    width={tornTop.width}
+    height={tornTop.height}
+    alt="Golden era image"
+    class="w-full"
+  />
+  <div class="bg-[#FAF8F2] w-full min-h-[500px] relative shadow-xl">
+    <div>
+      <div class="flex items-center space-x-4 px-4 md:px-8 py-4">
+        <img
+          id="builder-pic"
+          src=""
+          alt="Bodybuilder x"
+          class="w-[60px] h-[60px]"
+        />
+        <h2 class="text-3xl font-hand">Franco's leg day</h2>
+      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="11"
+        fill="none"
+        class="w-full"
+        ><path
+          stroke="#02111F"
+          stroke-linecap="square"
+          stroke-width="3"
+          d="M2.044 8.25c-2.013-.63 65.39.967 139.21 0 71.117-.933 148.474-4.493 160.823-2 13.018 2.626 83.554-2.88 146.717-4.226C507.734.768 560 3.749 560 3.749"
+        ></path></svg
+      >
+    </div>
+    <ul
+      class="font-hand list-disc list-inside px-4 md:px-8 text-xl my-4 md:my-8"
+    >
+      <li>3(12) Back squats</li>
+      <li>3(15) Walking lunges</li>
+      <li>3(10) Hack squats</li>
+      <li>4(5) RDL</li>
+      <li>4(4) Hamstring curl</li>
+    </ul>
+    <!-- Bottom buttons -->
+    <div
+      class="flex justify-between text-red-600 text-xl absolute bottom-0 w-full self-end px-2 md:px-4 py-4 font-hand"
+    >
+      <button>&lt;- Previous</button>
+      <button id="next-workout">Next -&gt;</button>
+    </div>
+    <!-- End bottom buttons -->
+  </div>
+  <!-- end workout -->
+</div>
+
+<script>
+  const builders = ["/src/assets/franco.png", "/src/assets/arnieHead.png"];
+  const builderImage = document.getElementById("builder-pic");
+  const changeButton = document.getElementById("next-workout");
+
+  let currentIndex = 0;
+
+  function changeImage() {
+    builderImage.src = builders[currentIndex];
+    currentIndex = (currentIndex + 1) % builders.length;
+  }
+
+  builderImage.src = builders[currentIndex];
+
+  changeButton?.addEventListener("click", changeImage);
+</script>
