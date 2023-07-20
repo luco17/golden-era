@@ -1,8 +1,31 @@
 ---
 import tornTop from "../assets/tornPaper.svg";
+
+interface Workout {
+  title: string;
+  imageSrc: string;
+  exercises: string[];
+}
+
+const {
+  workouts = [
+    {
+      title: "Franco's leg day",
+      imageSrc: "/src/assets/franco.png",
+      exercises: ['3(12) Back squats', '3(3) front squat', '2(50) calf raise'],
+    },
+    {
+      title: "Arnie's arms",
+      imageSrc: "/src/assets/arnieHead.png",
+      exercises: ['3(12) Bizeps', '3(3) Trizeps', '2(20) pec fly'],
+    },
+  ]
+} = Astro.props;
 ---
 
-<div class="max-w-xl my-12 md:my-16 -space-y-1 mx-auto">
+<div class="max-w-xl my-12 md:my-16 -space-y-1 mx-auto"
+x-data={`{ workouts: ${JSON.stringify(workouts)}, activeWorkout: 0}`}
+>
   <!-- torn paper top -->
   <img
     src={tornTop.src}
@@ -13,14 +36,18 @@ import tornTop from "../assets/tornPaper.svg";
   />
   <div class="bg-[#FAF8F2] w-full min-h-[500px] relative shadow-xl">
     <div>
-      <div class="flex items-center space-x-4 px-4 md:px-8 py-4">
+      <div class="flex items-center space-x-4 px-4 md:px-8 py-4" x-transition>
         <img
           id="builder-pic"
-          src=""
+          x-bind:src="workouts[activeWorkout].imageSrc"
           alt="Bodybuilder x"
           class="w-[60px] h-[60px]"
+          x-transition
         />
-        <h2 class="text-3xl font-hand">Franco's leg day</h2>
+        <h2 class="text-3xl font-hand"
+        x-text="workouts[activeWorkout].title"
+        x-transition
+        >Franco's leg day</h2>
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -38,37 +65,19 @@ import tornTop from "../assets/tornPaper.svg";
     <ul
       class="font-hand list-disc list-inside px-4 md:px-8 text-xl my-4 md:my-8"
     >
-      <li>3(12) Back squats</li>
-      <li>3(15) Walking lunges</li>
-      <li>3(10) Hack squats</li>
-      <li>4(5) RDL</li>
-      <li>4(4) Hamstring curl</li>
+    <template x-for="exercise in workouts[activeWorkout].exercises" :key="exercise">
+      <li x-text="exercise"></li>
+    </template>
     </ul>
     <!-- Bottom buttons -->
     <div
       class="flex justify-between text-red-600 text-xl absolute bottom-0 w-full self-end px-2 md:px-4 py-4 font-hand"
     >
       <button>&lt;- Previous</button>
-      <button id="next-workout">Next -&gt;</button>
+      <button id="next-workout"
+      @click="activeWorkout = (activeWorkout + 1) % workouts.length">Next -&gt;</button>
     </div>
     <!-- End bottom buttons -->
   </div>
   <!-- end workout -->
 </div>
-
-<script>
-  const builders = ["/src/assets/franco.png", "/src/assets/arnieHead.png"];
-  const builderImage = document.getElementById("builder-pic");
-  const changeButton = document.getElementById("next-workout");
-
-  let currentIndex = 0;
-
-  function changeImage() {
-    builderImage.src = builders[currentIndex];
-    currentIndex = (currentIndex + 1) % builders.length;
-  }
-
-  builderImage.src = builders[currentIndex];
-
-  changeButton?.addEventListener("click", changeImage);
-</script>
