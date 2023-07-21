@@ -62,6 +62,7 @@ import tornTop from "../assets/tornPaper.svg";
         @click="$store.workoutStore.activeWorkout = ($store.workoutStore.activeWorkout + 1) % $store.workoutStore.workouts.length"
         >Next -&gt;</button
       >
+      <button @click="navigator.clipboard.writeText($store.workoutStore.workouts[$store.workoutStore.activeWorkout].exercises)">Copy workout</button>
     </div>
     <!-- End bottom buttons -->
   </div>
