@@ -1,31 +1,8 @@
 ---
 import tornTop from "../assets/tornPaper.svg";
-
-interface Workout {
-  title: string;
-  imageSrc: string;
-  exercises: string[];
-}
-
-const {
-  workouts = [
-    {
-      title: "Franco's leg day",
-      imageSrc: "/src/assets/franco.png",
-      exercises: ['3(12) Back squats', '3(3) front squat', '2(50) calf raise'],
-    },
-    {
-      title: "Arnie's arms",
-      imageSrc: "/src/assets/arnieHead.png",
-      exercises: ['3(12) Bizeps', '3(3) Trizeps', '2(20) pec fly'],
-    },
-  ]
-} = Astro.props;
 ---
 
-<div class="max-w-xl my-12 md:my-16 -space-y-1 mx-auto"
-x-data={`{ workouts: ${JSON.stringify(workouts)}, activeWorkout: 0}`}
->
+<div class="max-w-xl my-12 md:my-16 -space-y-1 mx-auto">
   <!-- torn paper top -->
   <img
     src={tornTop.src}
@@ -34,48 +11,57 @@ x-data={`{ workouts: ${JSON.stringify(workouts)}, activeWorkout: 0}`}
     alt="Golden era image"
     class="w-full"
   />
-  <div class="bg-[#FAF8F2] w-full min-h-[500px] relative shadow-xl">
-    <div>
-      <div class="flex items-center space-x-4 px-4 md:px-8 py-4" x-transition>
-        <img
-          id="builder-pic"
-          x-bind:src="workouts[activeWorkout].imageSrc"
-          alt="Bodybuilder x"
-          class="w-[60px] h-[60px]"
-          x-transition
-        />
-        <h2 class="text-3xl font-hand"
-        x-text="workouts[activeWorkout].title"
+  <div class="bg-[#FAF8F2] w-full min-h-[650px] relative shadow-xl pb-12">
+    <div class="flex items-center space-x-4 px-4 md:px-8 py-4" x-transition>
+      <img
+        id="builder-pic"
+        x-bind:src="$store.workoutStore.workouts[$store.workoutStore.activeWorkout].imageSrc"
+        alt="Bodybuilder x"
+        class="w-[60px] h-[60px]"
         x-transition
-        >Franco's leg day</h2>
-      </div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="11"
-        fill="none"
-        class="w-full"
-        ><path
-          stroke="#02111F"
-          stroke-linecap="square"
-          stroke-width="3"
-          d="M2.044 8.25c-2.013-.63 65.39.967 139.21 0 71.117-.933 148.474-4.493 160.823-2 13.018 2.626 83.554-2.88 146.717-4.226C507.734.768 560 3.749 560 3.749"
-        ></path></svg
+      />
+      <h2
+        class="text-3xl font-hand"
+        x-text="$store.workoutStore.workouts[$store.workoutStore.activeWorkout].title"
+        x-transition
       >
+        Franco's leg day
+      </h2>
     </div>
-    <ul
-      class="font-hand list-disc list-inside px-4 md:px-8 text-xl my-4 md:my-8"
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="11"
+      fill="none"
+      class="w-full"
+      ><path
+        stroke="#02111F"
+        stroke-linecap="square"
+        stroke-width="3"
+        d="M2.044 8.25c-2.013-.63 65.39.967 139.21 0 71.117-.933 148.474-4.493 160.823-2 13.018 2.626 83.554-2.88 146.717-4.226C507.734.768 560 3.749 560 3.749"
+      ></path></svg
     >
-    <template x-for="exercise in workouts[activeWorkout].exercises" :key="exercise">
-      <li x-text="exercise"></li>
-    </template>
+    <ul
+      class="font-hand space-y-4 list-disc list-outside pr-2 pl-8 md:pl-12 md:pr-6 text-xl my-4 md:my-8"
+    >
+      <template
+        x-for="exercise in $store.workoutStore.workouts[$store.workoutStore.activeWorkout].exercises"
+        :key="exercise"
+      >
+        <li x-text="exercise"></li>
+      </template>
     </ul>
     <!-- Bottom buttons -->
     <div
       class="flex justify-between text-red-600 text-xl absolute bottom-0 w-full self-end px-2 md:px-4 py-4 font-hand"
     >
-      <button>&lt;- Previous</button>
-      <button id="next-workout"
-      @click="activeWorkout = (activeWorkout + 1) % workouts.length">Next -&gt;</button>
+      <button
+        @click="$store.workoutStore.activeWorkout = ($store.workoutStore.activeWorkout - 1 + $store.workoutStore.workouts.length) % $store.workoutStore.workouts.length"
+        >&lt;- Previous</button
+      >
+      <button
+        @click="$store.workoutStore.activeWorkout = ($store.workoutStore.activeWorkout + 1) % $store.workoutStore.workouts.length"
+        >Next -&gt;</button
+      >
     </div>
     <!-- End bottom buttons -->
   </div>

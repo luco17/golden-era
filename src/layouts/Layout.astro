@@ -20,7 +20,254 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-[url('/src/assets/whiteWallLrg.jpg')] bg-auto">
+  <body class="bg-[url('/src/assets/whiteWallLrg.jpg')] bg-auto" x-data>
     <slot />
   </body>
+  <script>
+    import Alpine from "alpinejs";
+
+    Alpine.store("workoutStore", {
+      activeWorkout: 0,
+
+      workouts: [
+        {
+          title: "Franco's chest",
+          imageSrc: "/src/assets/franco.png",
+          exercises: [
+            "Superset: bench press + cable crossover. 3x (15, 10, 4) - 3x20",
+            "Superset: dumbbell fly + cable crossover. 3x (20, 15, 6) - 3x20",
+            "Incline bench press 3x 15",
+            "Barbell pullovers 3x 25",
+            "Tricep dip 3x AMRAP",
+            "Cable crossovers 3x 25",
+          ],
+        },
+        {
+          title: "Franco's shoulders",
+          imageSrc: "/src/assets/franco.png",
+          exercises: [
+            "Lateral raises 4x 10",
+            "Bent-over reverse lateral raises 6x 10",
+            "Behind-the-neck press 4x 10",
+            "Dumbbell front raise (alternating) 3x 8",
+            "Cable lateral raise 3x 10",
+          ],
+        },
+        {
+          title: "Franco's back",
+          imageSrc: "/src/assets/franco.png",
+          exercises: [
+            "Pull-ups 6x 10-15",
+            "T-bar rows 4x 10",
+            "Seated cable rows 4x 10",
+            "Superset: single arm bent-over row + hammer grip pull-up 3x 10",
+          ],
+        },
+        {
+          title: "Franco's arms",
+          imageSrc: "/src/assets/franco.png",
+          exercises: [
+            "Superset: tricep pushdown + standing dumbbell curls. 4x8",
+            "Superset: barbell skull crusher + barbell preacher curl. 4x8",
+            "Superset: french press + seated incline dumbbell curl. 4x8",
+          ],
+        },
+        {
+          title: "Franco's legs",
+          imageSrc: "/src/assets/franco.png",
+          exercises: [
+            "Back squats 7x (20, 15, 10, 8, 6, 4, 2)",
+            "Leg press 4x (50, 25, 15, 8)",
+            "Leg extension 6x 20",
+            "Barbell lunge 3x 12-15",
+            "Deadlift 6x (5, 5, 5, 3, 1, 1)",
+          ],
+        },
+        {
+          title: "Arnie's chest",
+          imageSrc: "/src/assets/arnieHead.png",
+          exercises: [
+            "Bench press 5x 20-6 (pyramid style)",
+            "Incline barbell press 5x 10-15",
+            "Dumbbell fly - flat bench 5x 10-15",
+            "Dumbbell pullover 5x 15-20",
+          ],
+        },
+        {
+          title: "Arnie's back",
+          imageSrc: "/src/assets/arnieHead.png",
+          exercises: [
+            "Pull-ups 5x 15-8 (pyramid style)",
+            "T-bar row 5x 10-15",
+            "Bent-over barbell row 5x 10-15",
+            "Dumbell rows 5x 12",
+          ],
+        },
+        {
+          title: "Arnie's shoulders",
+          imageSrc: "/src/assets/arnieHead.png",
+          exercises: [
+            "Clean and press 5x 5",
+            "Superset: Arnold press + dumbbell front raise. 5x 6 - 5x 8-10",
+            "Superset: rear delt fly + upright row.  5x 12 - 5x 10",
+          ],
+        },
+        {
+          title: "Arnie's legs #1",
+          imageSrc: "/src/assets/arnieHead.png",
+          exercises: [
+            "Back squat 5x 8-12",
+            "Straight leg deadlift 5x 8-12",
+            "Good morning 5x 8-12",
+            "Lunges 5x 8-12",
+            "Superset: leg extension + hamstring curl. 5x 8-12",
+            "Superset: standing + seated calf raise. 5x 8-12",
+          ],
+        },
+        {
+          title: "Arnie's legs #2",
+          imageSrc: "/src/assets/arnieHead.png",
+          exercises: [
+            "Front squat 5x 8-12",
+            "Deadlift 5x 8-12",
+            "Good morning 5x 8-12",
+            "Lunges 5x 8-12",
+            "Superset: leg extension + hamstring curl. 5x 8-12",
+            "Superset: standing + seated calf raise. 5x 8-12",
+          ],
+        },
+        {
+          title: "Arnie's bizeps",
+          imageSrc: "/src/assets/arnieHead.png",
+          exercises: [
+            "Barbell curls 5x (30, 12, 10, 8, 6) pyramid style",
+            "Superset: incline db curl + concentration curl 5x (20, 15, 12, 10, 10)",
+          ],
+        },
+        {
+          title: "Arnie's trizeps",
+          imageSrc: "/src/assets/arnieHead.png",
+          exercises: [
+            "Close grip bench 5x (30, 12, 10, 8, 6)",
+            "Superset: triceps pushdown + one arm overhead tricep ext 5x (20, 15, 12, 10, 10)",
+          ],
+        },
+        {
+          title: "Mike Mentzer's Day 1",
+          imageSrc: "/src/assets/mikeHead.png",
+          exercises: [
+            "Superset: leg extension + leg press 1x 6-8",
+            "Back squat 1x 6-8",
+            "Hamstring curl 2x 6-8",
+            "Calf raise 2x 6-8",
+            "Leg press calf raise 1x 6-8",
+            "Bench press (incline) 3x 6-10",
+            "Dumbbell fly 2x 6-8",
+            "Tricep dip 2x 6-8",
+            "Lying triceps extension 2x 6-8",
+          ],
+        },
+        {
+          title: "Mike Mentzer's Day 2",
+          imageSrc: "/src/assets/mikeHead.png",
+          exercises: [
+            "Superset: dumbbell pullover + underhand pulldown 2x 6-8",
+            "Bent-over barbell row 2x 6-8",
+            "Superset: shrugs + upright row 2x 6-8",
+            "Superset: lateral raise + db strict press 2x 6-8",
+            "Superset: dumbbell reverse fly + rear delt row 2x 6-8",
+            "Barbell curl 1x 6-8",
+            "Concentration curl 2x 6-8",
+          ],
+        },
+        {
+          title: "Lou Ferrigno's chest & back",
+          imageSrc: "/src/assets/louHead.png",
+          exercises: [
+            "Dumbbell bench press 5x 6",
+            "Incline bench press 5x 6",
+            "Dumbbell pullover press 5x 6",
+            "Chest fly press 5x 6",
+            "T-bar row fly press 5x 6",
+            "Tricep dips 5x 6",
+            "Deadlift 5x 6",
+            "Bent-over row 5x 6",
+            "Pull-up 5x 6",
+          ],
+        },
+        {
+          title: "Lou Ferrigno's shoulders & arms",
+          imageSrc: "/src/assets/louHead.png",
+          exercises: [
+            "Military press 4x 10",
+            "Dumbbell shoulder press  4x 10",
+            "Front raise 4x 10",
+            "Lateral raise 4x 10",
+            "Barbell curl 4x 10",
+            "Dumbbell curl 4x 10",
+            "Concentration curl 4x 10",
+            "Cable pushdown 4x 8",
+            "Standing french press 4x 8",
+            "Skull crushers 4x 10",
+          ],
+        },
+        {
+          title: "Lou Ferrigno's legs",
+          imageSrc: "/src/assets/louHead.png",
+          exercises: [
+            "Hamstring curl 5x 10-15",
+            "Leg extension 5x 10-15",
+            "Leg press 5x 10-15",
+            "Back squat 5x 10-15",
+            "Hack squat 5x 10-15",
+            "Calf raise 10x 6-10",
+          ],
+        },
+        {
+          title: "Frank Zane's back & biceps",
+          imageSrc: "/src/assets/frankHead.png",
+          exercises: [
+            "Snatch grip deadlifts 3x (15, 12, 10)",
+            "Snatch grip deadlifts - blocks 3x (10, 10, 8)",
+            "T-bar rows 3x (12, 10, 8)",
+            "Front pulldown 3x 8-10",
+            "Dumbbell rows 3x 8-10",
+            "Dumbbell concentration curls 3x 8-10",
+            "Alternating dumbbell curls 3x 8-10",
+            "Incline dumbbell curls 3x (12, 10, 8)",
+            "Barbell reverse curls 2x 12",
+          ],
+        },
+        {
+          title: "Frank Zane's legs",
+          imageSrc: "/src/assets/frankHead.png",
+          exercises: [
+            "Leg extension warm up 2x30",
+            "Back squat 6x (15, 12, 11, 10, 9, 8)",
+            "Leg press 3x (15, 12, 10)",
+            "Lying leg curls 3x (12, 11, 10)",
+            "Leg extension 3x (12, 10, 8)",
+            "Standing calf raise 3x (15-20)",
+            "Donkey calf raise 4x (20-25)",
+            "Seated calf raise 4x 5 (drop set)",
+          ],
+        },
+        {
+          title: "Frank Zane's chest & tris",
+          imageSrc: "/src/assets/frankHead.png",
+          exercises: [
+            "Barbell bench press 6x (12, 10, 8, 6, 4, 2)",
+            "Incline dumbbell press 4x (10,8, 6, 4-6)",
+            "Decline pec flys 3x (12, 10, 8)",
+            "Dumbbell pullover 3x (12, 10, 8)",
+            "Close grip bench press 3x (12, 10, 8)",
+            "One are overhead extension 3x (12, 10, 8)",
+            "V-grip press down 3x (12, 10, 8)",
+            "Bent-over lateral raise 3x (15, 12, 10)",
+            "Lateral cable raise 3x (12, 10, 8)",
+          ],
+        },
+      ],
+    });
+  </script>
 </html>
