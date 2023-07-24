@@ -5,6 +5,7 @@ module.exports = {
     fontFamily: {
       title: ["Ultra"],
       hand: ["Permanent Marker"],
+      sans: ["Helvetica Neue"],
     },
     extend: {},
   },
