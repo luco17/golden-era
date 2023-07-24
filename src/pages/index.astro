@@ -2,10 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import gera from "../assets/geraOpt.svg";
 import Workout from "../components/Workout.astro";
+import CopiedToast from "../components/CopiedToast.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24">
+  <main class="container mx-auto px-1 sm:px-6 lg:px-8 py-12 sm:py-24"
+  x-data="{ showToast: false }">
     <div class="mx-auto max-w-3xl">
       <img
         src={gera.src}
@@ -15,5 +17,6 @@ import Workout from "../components/Workout.astro";
       />
       <Workout />
     </div>
+    <CopiedToast />
   </main>
 </Layout>
