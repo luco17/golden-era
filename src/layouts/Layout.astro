@@ -20,7 +20,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-[url('/src/assets/whiteWallLrg.jpg')] bg-auto" x-data>
+  <body class="bg-[url('/src/assets/whiteWallLrg.jpg')] bg-auto" x-data="{showWorkoutIndex: false}">
     <slot />
   </body>
   <script>

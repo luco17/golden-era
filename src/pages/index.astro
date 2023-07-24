@@ -4,12 +4,15 @@ import gera from "../assets/geraOpt.svg";
 import Workout from "../components/Workout.astro";
 import CopiedToast from "../components/CopiedToast.astro";
 import WorkoutIndex from "../components/WorkoutIndex.astro";
+import TopBar from "../components/TopBar.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-  <main class="container mx-auto px-1 sm:px-6 lg:px-8 py-12 sm:py-24"
-  x-data="{ showToast: false, showWorkoutIndex: false }">
-  <button @click="showWorkoutIndex = true">Index</button>
+<Layout title="Golden Era Workouts">
+  <nav class="container mx-auto px-1 sm:px-6 lg:px-8 py-4 ">
+    <TopBar />
+  </nav>
+  <main class="container mx-auto px-1 sm:px-6 lg:px-8 py-12"
+  x-data="{ showToast: false }">
     <div class="mx-auto max-w-3xl">
       <img
         src={gera.src}
