@@ -3,11 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import gera from "../assets/geraOpt.svg";
 import Workout from "../components/Workout.astro";
 import CopiedToast from "../components/CopiedToast.astro";
+import WorkoutIndex from "../components/WorkoutIndex.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main class="container mx-auto px-1 sm:px-6 lg:px-8 py-12 sm:py-24"
-  x-data="{ showToast: false }">
+  x-data="{ showToast: false, showWorkoutIndex: true }">
+  <button @click="showWorkoutIndex = true">Index</button>
     <div class="mx-auto max-w-3xl">
       <img
         src={gera.src}
@@ -18,5 +20,6 @@ import CopiedToast from "../components/CopiedToast.astro";
       <Workout />
     </div>
     <CopiedToast />
+    <WorkoutIndex />
   </main>
 </Layout>
