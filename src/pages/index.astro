@@ -5,13 +5,15 @@ import Workout from "../components/Workout.astro";
 import CopiedToast from "../components/CopiedToast.astro";
 import WorkoutIndex from "../components/WorkoutIndex.astro";
 import TopBar from "../components/TopBar.astro";
+import LeftCol from "../assets/collageLeft.png";
+import RightCol from "../assets/collageRight.png";
 ---
 
 <Layout title="Golden Era Workouts">
   <nav class="container mx-auto px-1 sm:px-6 lg:px-8 py-4 ">
     <TopBar />
   </nav>
-  <main class="container mx-auto px-1 sm:px-6 lg:px-8 py-4 md:py-12"
+  <main class="container mx-auto px-1 sm:px-6 lg:px-8 py-4"
   x-data="{ showToast: false }">
     <div class="mx-auto max-w-3xl">
       <img
@@ -20,7 +22,13 @@ import TopBar from "../components/TopBar.astro";
         height={gera.height}
         alt="Golden era image"
       />
-      <Workout />
+    </div>
+    <div class="mx-auto flex flex-nowrap justify-center my-12 md:my-16 md:-space-x-6 max-w-4xl">
+        <img src={LeftCol.src} alt="collage of bodybuilding images" class="hidden md:block w-[500px] xl:w-[600px]">
+        <div class="sm:flex-shrink-0 md:w-4/5 lg:w-3/5 w-full">
+          <Workout />
+        </div>
+        <img src={RightCol.src} alt="collage of bodybuilding images" class="hidden md:block w-[500px] xl:w-[600px]">
     </div>
     <CopiedToast />
     <WorkoutIndex />

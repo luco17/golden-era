@@ -7,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-[url('/src/assets/whiteWallLrg.jpg')] bg-auto" >
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -20,8 +20,8 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-[url('/src/assets/whiteWallLrg.jpg')] bg-auto" x-data="{showWorkoutIndex: false}">
-    <slot />
+  <body class="relative" x-data="{showWorkoutIndex: false}">
+      <slot />
   </body>
   <script>
     import Alpine from "alpinejs";
