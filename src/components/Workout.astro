@@ -18,8 +18,7 @@ import tornTop from "../assets/tornPaper.svg";
         id="builder-pic"
         x-bind:src="$store.workoutStore.workouts[$store.workoutStore.activeWorkout].imageSrc"
         alt="Bodybuilder x"
-        class="w-[60px] h-[60px]"
-        x-transition
+        class="w-[60px] h-[60px] animate-fadeIn opacity-0"
       />
       <h2
         class="text-3xl font-hand"
