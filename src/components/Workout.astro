@@ -5,7 +5,9 @@ import tornTop from "../assets/tornPaper.svg";
 <div class="max-w-xl mx-auto -space-y-1">
   <!-- torn paper top -->
   <img src={tornTop.src} alt="Golden era image" class="w-full" />
-  <div class="bg-[#FAF8F2] w-full min-h-[650px] relative pb-12 shadow-paper">
+  <div
+    class="bg-[#FAF8F2] w-full min-h-[400px] md:min-h-[650px] relative pb-12 shadow-paper"
+  >
     <div class="flex items-center space-x-4 px-4 md:px-8 py-4" x-transition>
       <img
         id="builder-pic"
@@ -44,9 +46,10 @@ import tornTop from "../assets/tornPaper.svg";
     </ul>
     <!-- Bottom buttons -->
     <div
-      class="flex justify-between text-red-600 text-xl absolute bottom-0 w-full px-2 md:px-4 py-4 font-hand"
+      class="flex justify-between text-red-600 text-xl md:absolute fixed bg-[#FAF8F2] bottom-0 left-0 w-screen md:w-full md:px-4 px-2 py-4 font-hand"
     >
       <button
+        class="px-2"
         @click="$store.workoutStore.activeWorkout = ($store.workoutStore.activeWorkout - 1 + $store.workoutStore.workouts.length) % $store.workoutStore.workouts.length"
         >&lt;- Previous</button
       >
@@ -56,6 +59,7 @@ import tornTop from "../assets/tornPaper.svg";
         >Copy workout</button
       >
       <button
+        class="px-2"
         @click="$store.workoutStore.activeWorkout = ($store.workoutStore.activeWorkout + 1) % $store.workoutStore.workouts.length"
         >Next -&gt;</button
       >

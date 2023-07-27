@@ -25,7 +25,7 @@ const { title } = Astro.props;
     <meta property="og:image" content="/ogImage2x.jpg" />
   </head>
   <body
-    class="bg-[url('/src/assets/whiteWallLrg.jpg')] bg-auto opacity-0 animate-[fadeOpacity_0.3s_ease_forwards_0.2s] min-h-screen"
+    class="bg-[url('/src/assets/whiteWallLrg.jpg')] bg-auto opacity-0 animate-[fadeOpacity_0.3s_ease_forwards_0.2s] min-h-screen overflow-x-clip"
     x-data="{showWorkoutIndex: false}"
   >
     <slot />
