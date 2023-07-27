@@ -7,22 +7,28 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="bg-[#ECEDEF]" >
+<html lang="en" class="bg-[#ECEDEF]">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link
-    href="https://fonts.googleapis.com/css2?family=Ultra&family=Permanent+Marker&display=swap"
-    rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ultra&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <meta name="description" content="Workouts from the 'Golden Era' of bodybuilding" />
+    <meta
+      name="description"
+      content="Workouts from the 'Golden Era' of bodybuilding"
+    />
     <meta property="og:image" content="/ogImage2x.jpg" />
   </head>
-  <body class="bg-[url('/src/assets/whiteWallLrg.jpg')] bg-auto opacity-0 animate-[fadeOpacity_0.3s_ease_forwards_0.2s] min-h-screen" x-data="{showWorkoutIndex: false}">
-      <slot />
+  <body
+    class="bg-[url('/src/assets/whiteWallLrg.jpg')] bg-auto opacity-0 animate-[fadeOpacity_0.3s_ease_forwards_0.2s] min-h-screen"
+    x-data="{showWorkoutIndex: false}"
+  >
+    <slot />
   </body>
   <script>
     import Alpine from "alpinejs";
@@ -177,7 +183,7 @@ const { title } = Astro.props;
             "Bent over row 6x 12",
             "Leg curl - lying 8x 12",
             "Leg curl - standing 8x 12",
-            "Calf raise - standing 4x 30"
+            "Calf raise - standing 4x 30",
           ],
         },
         {
@@ -270,7 +276,7 @@ const { title } = Astro.props;
           imageSrc: "sergioHead.png",
           exercises: [
             "Superset: bench press + chin ups. 7x 8 (ascending weight) - 7 15-5 ",
-            "Superset: dumbbell fly (flat) + dips. 5x 15", 
+            "Superset: dumbbell fly (flat) + dips. 5x 15",
           ],
         },
         {
@@ -313,7 +319,7 @@ const { title } = Astro.props;
             "Strict press 3x 10",
             "Barbell curls 3x 5",
             "French curls 3x 5",
-            "Superset: tricep pushdown + chin-up (behind the neck). 3x 15 - 5x 5", 
+            "Superset: tricep pushdown + chin-up (behind the neck). 3x 15 - 5x 5",
           ],
         },
         {
@@ -326,7 +332,7 @@ const { title } = Astro.props;
             "Back squat 5x 3",
             "Back squat 3x 20",
             "Front squat 5x 10",
-            "Calf raise (seated) 5x 5"
+            "Calf raise (seated) 5x 5",
           ],
         },
         {

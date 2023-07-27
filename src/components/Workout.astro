@@ -2,14 +2,9 @@
 import tornTop from "../assets/tornPaper.svg";
 ---
 
-<div class="max-w-xl mx-auto -space-y-1"
->
+<div class="max-w-xl mx-auto -space-y-1">
   <!-- torn paper top -->
-  <img
-    src={tornTop.src}
-    alt="Golden era image"
-    class="w-full"
-  />
+  <img src={tornTop.src} alt="Golden era image" class="w-full" />
   <div class="bg-[#FAF8F2] w-full min-h-[650px] relative shadow-paper pb-12">
     <div class="flex items-center space-x-4 px-4 md:px-8 py-4" x-transition>
       <img
@@ -56,9 +51,11 @@ import tornTop from "../assets/tornPaper.svg";
         @click="$store.workoutStore.activeWorkout = ($store.workoutStore.activeWorkout - 1 + $store.workoutStore.workouts.length) % $store.workoutStore.workouts.length"
         >&lt;- Previous</button
       >
-      <button @click="navigator.clipboard.writeText($store.workoutStore.workouts[$store.workoutStore.activeWorkout].exercises);showToast = true;setTimeout(() => showToast = false, 2000)"
+      <button
+        @click="navigator.clipboard.writeText($store.workoutStore.workouts[$store.workoutStore.activeWorkout].exercises);showToast = true;setTimeout(() => showToast = false, 2000)"
         class="font-sans text-black text-sm px-2 py-1 border-red-600 border-dashed border-4 font-medium hover:font-bold hover:border-red-700 focus:bg-yellow-200"
-        >Copy workout</button>
+        >Copy workout</button
+      >
       <button
         @click="$store.workoutStore.activeWorkout = ($store.workoutStore.activeWorkout + 1) % $store.workoutStore.workouts.length"
         >Next -&gt;</button
@@ -69,4 +66,3 @@ import tornTop from "../assets/tornPaper.svg";
   </div>
   <!-- end workout -->
 </div>
-

@@ -22,7 +22,7 @@
   <!-- Modal panel -->
   <div class="fixed inset-x-0 top-0 z-10 max-w-screen-2xl mx-auto">
     <div
-      class="relative flex flex-row flex-wrap space-x-2 w-full max-h-[95vh] overflow-y-auto rounded-b-xl bg-[#C85325] py-2 px-1 md:p-4 transition-all "
+      class="relative flex flex-row flex-wrap space-x-2 w-full max-h-[95vh] overflow-y-auto rounded-b-xl bg-[#C85325] py-2 px-1 md:p-4 transition-all"
       x-show="showWorkoutIndex"
       x-on:click.away="showWorkoutIndex = false"
       x-transition:enter="transition ease-out duration-300"
@@ -34,13 +34,15 @@
       x-cloak
     >
       <!-- Loop through workout titles -->
-      <template x-for="(workout, index) in $store.workoutStore.workouts" :key="index">
+      <template
+        x-for="(workout, index) in $store.workoutStore.workouts"
+        :key="index"
+      >
         <button
           type="button"
           class="rounded border-2 font-sans border-yellow-400 px-3 py-2 text-sm sm:text-lg text-[#FAF8F2] font-medium shadow-sm hover:bg-indigo-500 mb-2"
           x-on:click="showWorkoutIndex = false; $store.workoutStore.activeWorkout = index"
-          x-text="workout.title"
-        ></button>
+          x-text="workout.title"></button>
       </template>
     </div>
   </div>
