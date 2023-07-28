@@ -1,0 +1,103 @@
+---
+import AppStore from "../components/AppStore.astro";
+import PlayStore from "../components/PlayStore.astro";
+---
+
+<div
+  class="relative z-10"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+  x-show="showAbout"
+  x-cloak
+>
+  <!-- Modal panel -->
+  <div class="fixed inset-x-0 bottom-0 z-10 max-w-2xl mx-auto">
+    <div
+      class="relative w-full h-[95vh] overflow-y-auto rounded-t-md bg-[#446196] py-6 px-4 md:p-8 transition-all text-[#EFE5D4]"
+      x-show="showAbout"
+      x-on:click.away="showAbout = false"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 translate-y-full"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 translate-y-full"
+      x-cloak
+    >
+      {/* Slideover header + menu */}
+      <div class="flex items-center justify-between">
+        <h1 class="text-4xl md:text-6xl font-title pl-1">About</h1>
+        <div class="flex h-8 items-center">
+          <button
+            type="button"
+            class="relative rounded-full bg-white/20 text-[#EFE5D4] hover:text-gray-500 focus:ring-2 focus:ring-indigo-500"
+            @click="showAbout = false"
+          >
+            <span class="absolute -inset-2.5"></span>
+            <span class="sr-only">Close panel</span>
+            <svg
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      {/* Slideover text */}
+      <div class="space-y-2 mt-4 font-sans md:text-xl">
+        <p>
+          The 70s were the 'Golden Era' of bodybuilding. Watch 'Pumping Iron' or
+          'Arnold' and you'll be struck by how good the athletes looked.
+        </p>
+        <p>
+          Imagine the purity of training in a time with no texting in the racks,
+          no headphones, no selfies... just working out and forging friendships
+          and rivalries.
+        </p>
+        <p>
+          Inspired by the era's aesthetic we've created a repository of workouts
+          from some of these legendary figures. If you want to track your
+          progress or share sessions with your buddies you should check out our
+          training diary app, <strong
+            ><a href="https://squaddy.app" class="text-orange-500">Squaddy</a
+            ></strong
+          >, it'll help keep you accountable.
+        </p>
+        <div class="py-4 flex items-center space-x-3 justify-start">
+          <a
+            href="https://apps.apple.com/gb/app/squaddy-group-fitness-chat/id1569223958"
+          >
+            <AppStore />
+          </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=app.squaddy&hl=en_GB&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+          >
+            <PlayStore />
+          </a>
+        </div>
+        <p>We hope you enjoy this throwback to simpler times!</p>
+        <p>
+          <em>
+            p.s. please don't try these workouts if you don't know what you're
+            doing. The volumes are high!
+          </em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    [x-cloak] {
+      display: none;
+    }
+  </style>
+</div>
