@@ -14,7 +14,7 @@ import PlayStore from "../components/PlayStore.astro";
   <!-- Modal panel -->
   <div class="fixed inset-x-0 bottom-0 z-10 max-w-2xl mx-auto">
     <div
-      class="relative w-full h-screen py-safe-offset-8 overflow-y-auto py-8 bg-[#446196] px-4 md:p-8 rounded-t-xl transition-all text-[#EFE5D4] shadow-xl"
+      class="relative w-full max-h-[90vh] overflow-y-auto bg-[#446196] py-8 px-4 md:p-8 rounded-t-xl transition-all text-[#EFE5D4] shadow-xl"
       x-show="showAbout"
       x-on:click.away="showAbout = false"
       x-transition:enter="transition ease-out duration-300"

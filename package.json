@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "prettier-plugin-astro": "^0.11.0",
-    "prettier-plugin-tailwindcss": "^0.4.1",
-    "tailwindcss-safe-area": "^0.3.0"
+    "prettier-plugin-tailwindcss": "^0.4.1"
   }
 }
