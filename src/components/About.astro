@@ -23,7 +23,7 @@ import PlayStore from "../components/PlayStore.astro";
   >
   </div>
   <!-- Modal panel -->
-  <div class="fixed top-0 left-0 z-10 max-w-2xl mx-auto">
+  <div class="fixed top-0 left-0 z-10">
     <div
       class="relative w-screen h-screen overflow-y-auto bg-[#446196] py-8 px-4 md:p-8 rounded-t-xl transition-all text-[#EFE5D4] shadow-xl"
       x-show="showAbout"
@@ -38,7 +38,7 @@ import PlayStore from "../components/PlayStore.astro";
     >
       {/* Slideover header + menu */}
       <div class="flex items-center justify-between">
-        <h1 class="text-4xl md:text-6xl font-title pl-1">About</h1>
+        <h1 class="text-4xl md:text-6xl xl:text-7xl font-title pl-1">About</h1>
         <div class="flex h-8 items-center">
           <button
             type="button"
@@ -64,7 +64,7 @@ import PlayStore from "../components/PlayStore.astro";
         </div>
       </div>
       {/* Slideover text */}
-      <div class="space-y-2 mt-4 font-sans md:text-xl">
+      <div class="space-y-2 mt-4 font-sans md:text-xl xl:text-2xl max-w-3xl">
         <p>
           The 70s were the 'Golden Era' of bodybuilding. Watch 'Pumping Iron' or
           'Arnold' and you'll be struck by how good the athletes looked.
