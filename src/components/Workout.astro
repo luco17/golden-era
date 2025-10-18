@@ -2,17 +2,17 @@
 import tornTop from "../assets/tornPaper.svg";
 ---
 
-<div class="max-w-xl mx-auto -space-y-1">
+<article class="max-w-xl mx-auto -space-y-1">
   <!-- torn paper top -->
-  <img src={tornTop.src} alt="Golden era image" class="w-full" />
-  <div
+  <img src={tornTop.src} alt="Decorative torn paper edge" class="w-full" />
+  <section
     class="bg-[#FAF8F2] w-full min-h-[400px] md:min-h-[650px] relative pb-12 shadow-paper"
   >
     <div class="flex items-center space-x-4 px-4 md:px-8 py-4" x-transition>
       <img
         id="builder-pic"
         x-bind:src="$store.workoutStore.workouts[$store.workoutStore.activeWorkout].imageSrc"
-        alt="Bodybuilder x"
+        x-bind:alt="$store.workoutStore.workouts[$store.workoutStore.activeWorkout].title + ' portrait'"
         class="w-[60px] h-[60px] animate-fadeIn opacity-0"
       />
       <h2
@@ -66,6 +66,6 @@ import tornTop from "../assets/tornPaper.svg";
     </div>
 
     <!-- End bottom buttons -->
-  </div>
+  </section>
   <!-- end workout -->
-</div>
+</article>
